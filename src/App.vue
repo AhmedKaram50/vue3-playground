@@ -1,17 +1,39 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import ValedatorProps from './components/ValedatorProps.vue'
+import ScopedSlots from './components/ScopedSlots.vue'
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
+  
   <HelloWorld msg="Vite + Vue" />
+  <div>
+    <ValedatorProps title="Ahmed Is Here From Validator"/>
+    <ValedatorProps title="Hosam Is Here From Validator"/>
+    <ValedatorProps title="Ahmed Is Here From Validator 22"/>
+  </div>
+  <div>
+    <ScopedSlots>
+      <template v-slot:head="props">
+        <h5>
+          Head Template
+        </h5>
+        <p>
+          {{ props.headData }}
+        </p>
+      </template>
+      <template #body="{ bodyData }">
+        <h5>
+          {{ bodyData }}
+        </h5>
+      </template>
+      <template v-slot:end>
+        <h5>
+          End Template
+        </h5>
+      </template>
+    </ScopedSlots>
+  </div>
 </template>
 
 <style scoped>
