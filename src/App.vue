@@ -1,39 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import ValedatorProps from './components/ValedatorProps.vue'
-import ScopedSlots from './components/ScopedSlots.vue'
+import { useTodoList } from './stores/TodoList';
+
+const store = useTodoList();
+
+store.$onAction(({ name, store, args, after, onError }, state) => {
+  console.log(`(${name}) method called with (${args.join('-')}) arguments`)
+}) 
 </script>
 
 <template>
-  
-  <HelloWorld msg="Vite + Vue" />
-  <div>
-    <ValedatorProps title="Ahmed Is Here From Validator"/>
-    <ValedatorProps title="Hosam Is Here From Validator"/>
-    <ValedatorProps title="Ahmed Is Here From Validator 22"/>
-  </div>
-  <div>
-    <ScopedSlots>
-      <template v-slot:head="props">
-        <h5>
-          Head Template
-        </h5>
-        <p>
-          {{ props.headData }}
-        </p>
-      </template>
-      <template #body="{ bodyData }">
-        <h5>
-          {{ bodyData }}
-        </h5>
-      </template>
-      <template v-slot:end>
-        <h5>
-          End Template
-        </h5>
-      </template>
-    </ScopedSlots>
-  </div>
+  <RouterView />
 </template>
 
 <style scoped>
