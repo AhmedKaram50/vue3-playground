@@ -19,6 +19,10 @@ const changeTest = () => {
         test2: 'Updated Test 22',
     })
 }
+
+const goToHome = () => {
+    store.goToHome()
+}
 </script>
 
 <template>
@@ -29,6 +33,7 @@ const changeTest = () => {
       <button type="submit">Add Todo</button>
     </form>
     <button @click="changeTest">Change Test</button>
+    <button @click="goToHome">Home</button>
 
     <ul>
       <li v-for="todo in todoList" :key="todo.id">
